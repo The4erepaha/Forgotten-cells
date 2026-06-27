@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://dn2ej4srq2hic"]
+
+[ext_resource type="Script" uid="uid://bk6fvb87xu4sb" path="res://scripts/main.gd" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://bjy5tok1cf827" path="res://scenes/player.tscn" id="1_o5qli"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wofu5"]
+size = Vector2(1155, 651)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ygiu2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wofu5"]
+font_size = 109
+font_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D" unique_id=361318409]
+script = ExtResource("1_0wfyh")
+
+[node name="Player" parent="." unique_id=1312970847 instance=ExtResource("1_o5qli")]
+
+[node name="lee_left" type="StaticBody2D" parent="." unique_id=1044753347]
+position = Vector2(63, 137)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lee_left" unique_id=408615386]
+position = Vector2(513.5, 185.5)
+shape = SubResource("RectangleShape2D_wofu5")
+
+[node name="Sprite2D" type="Sprite2D" parent="lee_left" unique_id=334906359]
+position = Vector2(512.5, 185.50003)
+scale = Vector2(1153, 651)
+texture = SubResource("CanvasTexture_ygiu2")
+
+[node name="Label" type="Label" parent="lee_left" unique_id=757073872]
+offset_left = 397.0
+offset_top = 108.0
+offset_right = 602.0
+offset_bottom = 257.0
+text = "Left"
+label_settings = SubResource("LabelSettings_wofu5")
+horizontal_alignment = 1
+
+[node name="lee_right" type="StaticBody2D" parent="." unique_id=1934990240]
+position = Vector2(63, 137)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lee_right" unique_id=692199760]
+position = Vector2(513.5, 185.5)
+shape = SubResource("RectangleShape2D_wofu5")
+
+[node name="Sprite2D" type="Sprite2D" parent="lee_right" unique_id=2007385700]
+position = Vector2(512.5, 185.50003)
+scale = Vector2(1153, 651)
+texture = SubResource("CanvasTexture_ygiu2")
+
+[node name="Label" type="Label" parent="lee_right" unique_id=332644147]
+offset_left = 397.0
+offset_top = 108.0
+offset_right = 602.0
+offset_bottom = 257.0
+text = "Right
+"
+label_settings = SubResource("LabelSettings_wofu5")
+horizontal_alignment = 1
+
+[node name="lee_down" type="StaticBody2D" parent="." unique_id=1542651198]
+position = Vector2(63, 137)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lee_down" unique_id=1843790391]
+position = Vector2(513.5, 185.5)
+shape = SubResource("RectangleShape2D_wofu5")
+
+[node name="Sprite2D" type="Sprite2D" parent="lee_down" unique_id=1040380932]
+position = Vector2(512.5, 185.50003)
+scale = Vector2(1153, 651)
+texture = SubResource("CanvasTexture_ygiu2")
+
+[node name="Label" type="Label" parent="lee_down" unique_id=1147776452]
+offset_left = 397.0
+offset_top = 108.0
+offset_right = 602.0
+offset_bottom = 257.0
+text = "Down"
+label_settings = SubResource("LabelSettings_wofu5")
+horizontal_alignment = 1
