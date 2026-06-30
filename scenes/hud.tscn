@@ -3,31 +3,31 @@
 [ext_resource type="Script" uid="uid://k4d4usgwvo5l" path="res://scripts/hud.gd" id="1_ahhtf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wofu5"]
-font_size = 34
+font_size = 33
 
 [node name="HUD" type="Node2D" unique_id=1391800513]
 script = ExtResource("1_ahhtf")
 
 [node name="HP_bar" type="Panel" parent="." unique_id=1867865153]
-offset_left = 939.0
-offset_top = 475.0
-offset_right = 1066.0
-offset_bottom = 551.0
+offset_left = 3.0
+offset_top = 569.0
+offset_right = 130.0
+offset_bottom = 645.0
 
 [node name="HP_label" type="Label" parent="HP_bar" unique_id=76254418]
 layout_mode = 0
-offset_right = 211.0
-offset_bottom = 97.0
-text = "
+offset_right = 127.0
+offset_bottom = 95.0
+text = "HP:
 "
 label_settings = SubResource("LabelSettings_wofu5")
 vertical_alignment = 1
 
 [node name="Ammo_bar" type="Panel" parent="." unique_id=887934472]
-offset_left = 11.0
-offset_top = 560.0
-offset_right = 210.0
-offset_bottom = 636.0
+offset_left = 946.0
+offset_top = 569.0
+offset_right = 1145.0
+offset_bottom = 645.0
 
 [node name="Ammo_label" type="Label" parent="Ammo_bar" unique_id=70495571]
 layout_mode = 0
@@ -38,10 +38,10 @@ label_settings = SubResource("LabelSettings_wofu5")
 vertical_alignment = 1
 
 [node name="Armor_bar" type="Panel" parent="." unique_id=1722541668]
-offset_left = 937.0
-offset_top = 563.0
-offset_right = 1139.0
-offset_bottom = 639.0
+offset_left = 512.0
+offset_top = 566.0
+offset_right = 714.0
+offset_bottom = 642.0
 
 [node name="Armor_label" type="Label" parent="Armor_bar" unique_id=1379980463]
 layout_mode = 0

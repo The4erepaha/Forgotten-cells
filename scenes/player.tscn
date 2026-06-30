@@ -6,14 +6,11 @@
 
 [node name="Player" type="Node2D" unique_id=1312970847]
 script = ExtResource("1_3vyb7")
+hp = 1
+ammo = 1
+armor = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1938232944]
 position = Vector2(588, 317)
 scale = Vector2(26.250013, 22.75)
 texture = SubResource("CanvasTexture_ygiu2")
-
-[node name="Button" type="Button" parent="." unique_id=751256137]
-offset_right = 324.0
-offset_bottom = 59.0
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
