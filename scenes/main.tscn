@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bk6fvb87xu4sb" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bjy5tok1cf827" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://cgmc1ojuxp6bq" path="res://scenes/hud.tscn" id="2_sugp2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wofu5"]
 size = Vector2(1155, 651)
@@ -14,6 +15,8 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node2D" unique_id=361318409]
 script = ExtResource("1_0wfyh")
+
+[node name="HUD" parent="." unique_id=1391800513 instance=ExtResource("2_sugp2")]
 
 [node name="Player" parent="." unique_id=1312970847 instance=ExtResource("1_o5qli")]
 
