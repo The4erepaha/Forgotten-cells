@@ -20,19 +20,21 @@ script = ExtResource("1_0wfyh")
 
 [node name="Player" parent="." unique_id=1312970847 instance=ExtResource("1_o5qli")]
 
-[node name="lee_left" type="StaticBody2D" parent="." unique_id=1044753347]
+[node name="lee_items" type="Node2D" parent="." unique_id=603396588]
+
+[node name="lee_left" type="StaticBody2D" parent="lee_items" unique_id=1044753347]
 position = Vector2(63, 137)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="lee_left" unique_id=408615386]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lee_items/lee_left" unique_id=408615386]
 position = Vector2(513.5, 185.5)
 shape = SubResource("RectangleShape2D_wofu5")
 
-[node name="Sprite2D" type="Sprite2D" parent="lee_left" unique_id=334906359]
+[node name="Sprite2D" type="Sprite2D" parent="lee_items/lee_left" unique_id=334906359]
 position = Vector2(512.5, 185.50003)
 scale = Vector2(1153, 651)
 texture = SubResource("CanvasTexture_ygiu2")
 
-[node name="Label" type="Label" parent="lee_left" unique_id=757073872]
+[node name="Label" type="Label" parent="lee_items/lee_left" unique_id=757073872]
 offset_left = 397.0
 offset_top = 108.0
 offset_right = 602.0
@@ -41,19 +43,19 @@ text = "Left"
 label_settings = SubResource("LabelSettings_wofu5")
 horizontal_alignment = 1
 
-[node name="lee_right" type="StaticBody2D" parent="." unique_id=1934990240]
+[node name="lee_right" type="StaticBody2D" parent="lee_items" unique_id=1934990240]
 position = Vector2(63, 137)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="lee_right" unique_id=692199760]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lee_items/lee_right" unique_id=692199760]
 position = Vector2(513.5, 185.5)
 shape = SubResource("RectangleShape2D_wofu5")
 
-[node name="Sprite2D" type="Sprite2D" parent="lee_right" unique_id=2007385700]
+[node name="Sprite2D" type="Sprite2D" parent="lee_items/lee_right" unique_id=2007385700]
 position = Vector2(512.5, 185.50003)
 scale = Vector2(1153, 651)
 texture = SubResource("CanvasTexture_ygiu2")
 
-[node name="Label" type="Label" parent="lee_right" unique_id=332644147]
+[node name="Label" type="Label" parent="lee_items/lee_right" unique_id=332644147]
 offset_left = 397.0
 offset_top = 108.0
 offset_right = 602.0
@@ -63,19 +65,19 @@ text = "Right
 label_settings = SubResource("LabelSettings_wofu5")
 horizontal_alignment = 1
 
-[node name="lee_down" type="StaticBody2D" parent="." unique_id=1542651198]
+[node name="lee_down" type="StaticBody2D" parent="lee_items" unique_id=1542651198]
 position = Vector2(63, 137)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="lee_down" unique_id=1843790391]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lee_items/lee_down" unique_id=1843790391]
 position = Vector2(513.5, 185.5)
 shape = SubResource("RectangleShape2D_wofu5")
 
-[node name="Sprite2D" type="Sprite2D" parent="lee_down" unique_id=1040380932]
+[node name="Sprite2D" type="Sprite2D" parent="lee_items/lee_down" unique_id=1040380932]
 position = Vector2(512.5, 185.50003)
 scale = Vector2(1153, 651)
 texture = SubResource("CanvasTexture_ygiu2")
 
-[node name="Label" type="Label" parent="lee_down" unique_id=1147776452]
+[node name="Label" type="Label" parent="lee_items/lee_down" unique_id=1147776452]
 offset_left = 397.0
 offset_top = 108.0
 offset_right = 602.0
