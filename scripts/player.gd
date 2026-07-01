@@ -7,7 +7,7 @@ extends Node2D
 
 @export var hp = 3     #hp игрока
 @export var ammo = 3        # амуниция игрока
-@export var armor = 3       # броня игрока
+@export var aim_charge = 5     # броня игрока
 
 signal player_state(state)
 
@@ -27,8 +27,9 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	leeSystem()
-	move_aim()
-
+	move_aim(_delta)
+	if state == State.DOWN:
+		aim_bonus(_delta)
 
 # функция отвечающяя за логику и перемещение между препятствиями.
 func leeSystem():
@@ -38,28 +39,29 @@ func leeSystem():
 	if Input.is_action_just_pressed("left"): 
 		if state == State.NORMAL:
 			state = State.LEFT
-			hp_bonus()
+			hp_bonus()                 # функция хп бонуса
 			emit_signal("player_state",state)
 			emit_signal("changed_resources")
 	if Input.is_action_just_pressed("right"):
 		if state == State.NORMAL:
 			state = State.RIGHT
-			ammo_bonus()
+			ammo_bonus()              # функция бонуса патронов
 			emit_signal("player_state", state)
 			emit_signal("changed_resources")
 	if Input.is_action_just_pressed("down"):    # клавиша S
 		if state == State.NORMAL:
 			state = State.DOWN
-			armor_bonus()
+			#aim_bonus()              # функция зарядки снайпера 
 			emit_signal("player_state", state)
 			emit_signal("changed_resources")
 
 # функция отвечающая за логику прицела и выстрела
-func move_aim():
-	if state == State.NORMAL:
+func move_aim(delta):
+	if state == State.NORMAL && aim_charge > 0:
 		if Input.is_action_pressed("up_aim"):
 			$Sprite2D.visible = true
 			#спрайт будет менять позицию как и движения мышки (следит за мышкой)
+			aim_system(delta)
 			$Sprite2D.global_position = get_global_mouse_position()  
 			if Input.is_action_just_pressed("shoot"):
 				shoot_system()
@@ -84,7 +86,7 @@ func ammo_bonus():
 		ammo = 3
 		print("Magazine is full")
 
-
+# функция отвечающая за систему выстрела 
 func shoot_system():
 	if ammo >= 1:
 		ammo -= 1
@@ -93,9 +95,14 @@ func shoot_system():
 		emit_signal("changed_resources")  
 	else: print("нет патронов!")
 
-func armor_bonus():
-	armor += 1
-	print("Add 1 armor")
-	if armor >=3:
-		armor = 3
-		print("Armor is full")
+# функция пополнения патронов
+func aim_bonus(delta):
+	aim_charge += 1 * delta
+	if aim_charge >= 5:
+		aim_charge = 5
+	emit_signal("changed_resources")
+
+# функция пополнения зарядки прицела
+func aim_system(delta):
+	aim_charge -= 1 * delta
+	emit_signal("changed_resources")

@@ -16,8 +16,6 @@ font_color = Color(0, 0, 0, 1)
 [node name="Main" type="Node2D" unique_id=361318409]
 script = ExtResource("1_0wfyh")
 
-[node name="HUD" parent="." unique_id=1391800513 instance=ExtResource("2_sugp2")]
-
 [node name="Player" parent="." unique_id=1312970847 instance=ExtResource("1_o5qli")]
 
 [node name="lee_items" type="Node2D" parent="." unique_id=603396588]
@@ -85,3 +83,5 @@ offset_bottom = 257.0
 text = "Down"
 label_settings = SubResource("LabelSettings_wofu5")
 horizontal_alignment = 1
+
+[node name="HUD" parent="." unique_id=1391800513 instance=ExtResource("2_sugp2")]

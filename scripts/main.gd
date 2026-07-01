@@ -13,7 +13,7 @@ func _ready() -> void:
 	$lee_items/lee_down.visible = false
 	$HUD/HP_bar/HP_label.text = "HP:" + str(player.hp)
 	$HUD/Ammo_bar/Ammo_label.text = "Ammo: " +str(player.ammo)
-	$HUD/Armor_bar/Armor_label.text = "Armor: " + str(player.armor)
+	$HUD/AimCharge_bar/AimCharge_label.text = "Armor: " + str(player.aim_charge)
 
 
 func _physics_process(_delta: float) -> void:
@@ -42,4 +42,4 @@ func _on_state_player(state):
 func _update_resources():
 	$HUD/HP_bar/HP_label.text = "HP:" + str(player.hp)
 	$HUD/Ammo_bar/Ammo_label.text = "Ammo: " + str(player.ammo)
-	$HUD/Armor_bar/Armor_label.text = "Armor: " + str(player.armor)
+	$HUD/AimCharge_bar/AimCharge_label.text = "Aim: " + str(int(player.aim_charge))

@@ -37,13 +37,13 @@ text = "Ammo: "
 label_settings = SubResource("LabelSettings_wofu5")
 vertical_alignment = 1
 
-[node name="Armor_bar" type="Panel" parent="." unique_id=1722541668]
+[node name="AimCharge_bar" type="Panel" parent="." unique_id=1722541668]
 offset_left = 512.0
 offset_top = 566.0
 offset_right = 714.0
 offset_bottom = 642.0
 
-[node name="Armor_label" type="Label" parent="Armor_bar" unique_id=1379980463]
+[node name="AimCharge_label" type="Label" parent="AimCharge_bar" unique_id=1379980463]
 layout_mode = 0
 offset_right = 202.0
 offset_bottom = 76.0
