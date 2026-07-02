@@ -16,9 +16,17 @@ font_color = Color(0, 0, 0, 1)
 [node name="Main" type="Node2D" unique_id=361318409]
 script = ExtResource("1_0wfyh")
 
+[node name="Spawn_enemy" type="Timer" parent="." unique_id=1842595399]
+wait_time = 5.0
+autostart = true
+
+[node name="HUD" parent="." unique_id=1391800513 instance=ExtResource("2_sugp2")]
+z_index = 2
+
 [node name="Player" parent="." unique_id=1312970847 instance=ExtResource("1_o5qli")]
 
 [node name="lee_items" type="Node2D" parent="." unique_id=603396588]
+z_index = 1
 
 [node name="lee_left" type="StaticBody2D" parent="lee_items" unique_id=1044753347]
 position = Vector2(63, 137)
@@ -84,4 +92,4 @@ text = "Down"
 label_settings = SubResource("LabelSettings_wofu5")
 horizontal_alignment = 1
 
-[node name="HUD" parent="." unique_id=1391800513 instance=ExtResource("2_sugp2")]
+[connection signal="timeout" from="Spawn_enemy" to="." method="_on_timer_timeout"]

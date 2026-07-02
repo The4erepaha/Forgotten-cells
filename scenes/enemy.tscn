@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dx1fv6sukh855"]
+
+[ext_resource type="Texture2D" uid="uid://bksakgn1dij4m" path="res://icon.svg" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://cywe2p1xh6j7h" path="res://scripts/enemy.gd" id="1_md0e3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygiu2"]
+size = Vector2(64, 64)
+
+[node name="Enemy" type="Node2D" unique_id=1697744770]
+script = ExtResource("1_md0e3")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=826674636]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=791716602]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_7p1mj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=588655418]
+shape = SubResource("RectangleShape2D_ygiu2")
+
+[node name="Timer" type="Timer" parent="." unique_id=614610721]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -9,6 +9,8 @@ extends Node2D
 @export var ammo = 3        # амуниция игрока
 @export var aim_charge = 5     # броня игрока
 
+@export var player_damage = 1
+
 signal player_state(state)
 
 enum State{
@@ -59,14 +61,14 @@ func leeSystem():
 func move_aim(delta):
 	if state == State.NORMAL && aim_charge > 0:
 		if Input.is_action_pressed("up_aim"):
-			$Sprite2D.visible = true
+			$Aim.visible = true
 			#спрайт будет менять позицию как и движения мышки (следит за мышкой)
 			aim_system(delta)
-			$Sprite2D.global_position = get_global_mouse_position()  
+			$Aim.global_position = get_global_mouse_position()  
 			if Input.is_action_just_pressed("shoot"):
 				shoot_system()
-		else: $Sprite2D.visible = false
-	else: $Sprite2D.visible = false
+		else: $Aim.visible = false
+	else: $Aim.visible = false
 
 
 
@@ -92,8 +94,14 @@ func shoot_system():
 		ammo -= 1
 		# !!! очень важно, если есть изменние нужен emit_signal 
 		# что бы изменилось - нужно  крикнуть
+		var overlapping = $Aim.get_overlapping_areas() #это список Area2D которые касаются прицела
+		if overlapping.size() > 0:
+			var hit_area = overlapping[0]  # hit_area - это Area2D врага
+			var enemy = hit_area.get_parent() # enemy это сам узел сцены Enemy (Node2D)
+			enemy.take_damage_enemy(player_damage)
 		emit_signal("changed_resources")  
 	else: print("нет патронов!")
+
 
 # функция пополнения патронов
 func aim_bonus(delta):
@@ -106,3 +114,15 @@ func aim_bonus(delta):
 func aim_system(delta):
 	aim_charge -= 1 * delta
 	emit_signal("changed_resources")
+
+# функция получения урона
+func take_damage_player(damage):
+	hp -= damage
+	emit_signal("changed_resources")
+	if hp <= 0:
+		hp = 0
+		die_player()
+
+# функция смерти игрока
+func die_player():
+	print("gg")
