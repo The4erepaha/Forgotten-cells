@@ -47,6 +47,29 @@ offset_bottom = 642.0
 layout_mode = 0
 offset_right = 202.0
 offset_bottom = 76.0
-text = "Armor:"
+text = "Aim:"
 label_settings = SubResource("LabelSettings_wofu5")
 vertical_alignment = 1
+
+[node name="Score" type="Panel" parent="." unique_id=1769661971]
+offset_left = 500.0
+offset_top = 5.0
+offset_right = 702.0
+offset_bottom = 81.0
+
+[node name="Score_label" type="Label" parent="Score" unique_id=871863142]
+layout_mode = 0
+offset_right = 202.0
+offset_bottom = 76.0
+text = "Score:"
+label_settings = SubResource("LabelSettings_wofu5")
+vertical_alignment = 1
+
+[node name="Move_charge" type="Panel" parent="." unique_id=1712568884]
+offset_right = 141.0
+offset_bottom = 40.0
+
+[node name="Move_Label" type="Label" parent="Move_charge" unique_id=1764821236]
+layout_mode = 0
+offset_right = 141.0
+offset_bottom = 40.0

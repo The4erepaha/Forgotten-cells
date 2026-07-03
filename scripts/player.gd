@@ -7,9 +7,13 @@ extends Node2D
 
 @export var hp = 3     #hp игрока
 @export var ammo = 3        # амуниция игрока
-@export var aim_charge = 5     # броня игрока
+@export var aim_charge = 5     # заряд прицела
 
 @export var player_damage = 1
+
+@export var move_energy = 5  # заряд движения
+
+var score_kills = 0   # очки кол-во убитых врагов 
 
 signal player_state(state)
 
@@ -32,6 +36,8 @@ func _physics_process(_delta: float) -> void:
 	move_aim(_delta)
 	if state == State.DOWN:
 		aim_bonus(_delta)
+	move_system(_delta)
+
 
 # функция отвечающяя за логику и перемещение между препятствиями.
 func leeSystem():
@@ -39,19 +45,20 @@ func leeSystem():
 		state = State.NORMAL
 		emit_signal("player_state", state)
 	if Input.is_action_just_pressed("left"): 
-		if state == State.NORMAL:
+		if state == State.NORMAL && move_energy == 5:
 			state = State.LEFT
 			hp_bonus()                 # функция хп бонуса
+			
 			emit_signal("player_state",state)
 			emit_signal("changed_resources")
 	if Input.is_action_just_pressed("right"):
-		if state == State.NORMAL:
+		if state == State.NORMAL && move_energy == 5:
 			state = State.RIGHT
 			ammo_bonus()              # функция бонуса патронов
 			emit_signal("player_state", state)
 			emit_signal("changed_resources")
 	if Input.is_action_just_pressed("down"):    # клавиша S
-		if state == State.NORMAL:
+		if state == State.NORMAL && move_energy == 5:
 			state = State.DOWN
 			#aim_bonus()              # функция зарядки снайпера 
 			emit_signal("player_state", state)
@@ -99,6 +106,7 @@ func shoot_system():
 			var hit_area = overlapping[0]  # hit_area - это Area2D врага
 			var enemy = hit_area.get_parent() # enemy это сам узел сцены Enemy (Node2D)
 			enemy.take_damage_enemy(player_damage)
+			score_kills += 1
 		emit_signal("changed_resources")  
 	else: print("нет патронов!")
 
@@ -123,6 +131,16 @@ func take_damage_player(damage):
 		hp = 0
 		die_player()
 
+func move_system(delta):
+	if move_energy >= 5:
+		move_energy = 5
+	if state == State.NORMAL && move_energy < 5:
+		move_energy += 1 * delta
+	if state != State.NORMAL && move_energy == 5:
+		move_energy = 0
+	emit_signal("changed_resources")
+
+
 # функция смерти игрока
 func die_player():
-	print("gg")
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")   # при смерти возращает в меню

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Forgotten cells"
-run/main_scene="uid://dn2ej4srq2hic"
+run/main_scene="uid://d4aikp4uv1vjm"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
