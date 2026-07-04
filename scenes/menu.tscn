@@ -1,40 +1,112 @@
 [gd_scene format=3 uid="uid://d4aikp4uv1vjm"]
 
 [ext_resource type="Script" uid="uid://c2ylfktk2685j" path="res://scripts/menu.gd" id="1_yqeox"]
+[ext_resource type="Texture2D" uid="uid://ccax221ahvr5d" path="res://sprites/menu_fon.png" id="2_mhnvy"]
+[ext_resource type="Texture2D" uid="uid://c372isert274b" path="res://sprites/start_button.png" id="3_4ytvr"]
+[ext_resource type="Texture2D" uid="uid://wpapnunxqn34" path="res://sprites/guide_button.png" id="4_g3eks"]
+[ext_resource type="Texture2D" uid="uid://beoeow8g62m51" path="res://sprites/exit_button.png" id="5_4ytvr"]
+[ext_resource type="Texture2D" uid="uid://i72rpxhqehcd" path="res://sprites/guide_fon.png" id="6_g3eks"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wofu5"]
+line_spacing = 0.0
+font_color = Color(0.40784314, 0.5294118, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ygiu2"]
+line_spacing = 0.0
+font_color = Color(0.40784314, 0.5294118, 0, 1)
 
 [node name="Menu" type="Node2D" unique_id=1857889423]
 script = ExtResource("1_yqeox")
 
-[node name="Start_panel" type="Panel" parent="." unique_id=1525655613]
-offset_right = 1148.0
-offset_bottom = 651.0
+[node name="Start_menu" type="TextureRect" parent="." unique_id=1005463405]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_mhnvy")
 
-[node name="Start_Button" type="Button" parent="Start_panel" unique_id=1892789469]
+[node name="Start_Button" type="Button" parent="Start_menu" unique_id=1291660389]
 layout_mode = 0
-offset_left = 454.0
-offset_top = 287.0
-offset_right = 675.0
-offset_bottom = 356.0
-text = "START"
+offset_left = 443.0
+offset_top = 507.0
+offset_right = 717.0
+offset_bottom = 595.0
+icon = ExtResource("3_4ytvr")
+icon_alignment = 1
+expand_icon = true
 
-[node name="Guide_button" type="Button" parent="Start_panel" unique_id=103950396]
+[node name="Guide_button" type="Button" parent="Start_menu" unique_id=747080056]
 layout_mode = 0
-offset_left = 454.0
-offset_top = 374.0
-offset_right = 675.0
-offset_bottom = 443.0
-text = "Guide"
+offset_left = 102.0
+offset_top = 507.0
+offset_right = 370.0
+offset_bottom = 595.0
+icon = ExtResource("4_g3eks")
+icon_alignment = 1
+expand_icon = true
 
-[node name="Guide_panel" type="Panel" parent="." unique_id=1763802053]
-offset_right = 1150.0
-offset_bottom = 651.0
-
-[node name="Exit_Button" type="Button" parent="Guide_panel" unique_id=1589140843]
+[node name="ExitGame_button" type="Button" parent="Start_menu" unique_id=1105397523]
 layout_mode = 0
-offset_right = 143.0
-offset_bottom = 56.0
-text = "EXIT"
+offset_left = 790.0
+offset_top = 507.0
+offset_right = 1058.0
+offset_bottom = 590.0
+icon = ExtResource("5_4ytvr")
+icon_alignment = 1
+expand_icon = true
 
-[connection signal="pressed" from="Start_panel/Start_Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Start_panel/Guide_button" to="." method="_on_guide_button_pressed"]
-[connection signal="pressed" from="Guide_panel/Exit_Button" to="." method="_on_exit_button_pressed"]
+[node name="Guide_menu" type="TextureRect" parent="Start_menu" unique_id=499947576]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("6_g3eks")
+
+[node name="Exit_guide" type="Button" parent="Start_menu/Guide_menu" unique_id=413022418]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 507.0
+offset_right = 717.0
+offset_bottom = 590.0
+icon = ExtResource("5_4ytvr")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="Start_menu/Guide_menu" unique_id=1302169028]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 185.0
+offset_right = 494.0
+offset_bottom = 392.0
+text = "Movement:
+W - stand in the open / exit cover
+A - move to left cover
+S - move to bottom cover
+D - move to right cover
+Shooting:
+RMB - aim
+LMB - shoot
+! You can only shoot while aiming !"
+label_settings = SubResource("LabelSettings_wofu5")
+
+[node name="Label2" type="Label" parent="Start_menu/Guide_menu" unique_id=954895336]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 61.0
+offset_right = 1071.0
+offset_bottom = 388.0
+text = "Resources:
+You have basic resources:
+HP / Ammo / Aim / Move Energy.
+Covers not only protect you but also give bonuses:
+- Left cover: +1 HP
+- Right cover: +1 Ammo
+- Bottom cover: recharges aim.
+Aim - you have an aim charge, if it drops to 0 you won't be able to aim
+Move Energy - moving to cover consumes energy. 
+To recharge you need to exit cover
+
+! Enemy will deal damage if you fail to shoot them in time. !"
+label_settings = SubResource("LabelSettings_ygiu2")
+
+[connection signal="pressed" from="Start_menu/Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Start_menu/Guide_button" to="." method="_on_guide_button_pressed"]
+[connection signal="pressed" from="Start_menu/ExitGame_button" to="." method="_on_exit_game_button_pressed"]
+[connection signal="pressed" from="Start_menu/Guide_menu/Exit_guide" to="." method="_on_exit_guide_pressed"]

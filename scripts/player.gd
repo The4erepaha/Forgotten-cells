@@ -12,7 +12,7 @@ extends Node2D
 @export var player_damage = 1
 
 @export var move_energy = 5  # заряд движения
-
+var move = move_energy
 var score_kills = 0   # очки кол-во убитых врагов 
 
 signal player_state(state)
@@ -45,20 +45,20 @@ func leeSystem():
 		state = State.NORMAL
 		emit_signal("player_state", state)
 	if Input.is_action_just_pressed("left"): 
-		if state == State.NORMAL && move_energy == 5:
+		if state == State.NORMAL && move == move_energy:
 			state = State.LEFT
 			hp_bonus()                 # функция хп бонуса
 			
 			emit_signal("player_state",state)
 			emit_signal("changed_resources")
 	if Input.is_action_just_pressed("right"):
-		if state == State.NORMAL && move_energy == 5:
+		if state == State.NORMAL && move == move_energy:
 			state = State.RIGHT
 			ammo_bonus()              # функция бонуса патронов
 			emit_signal("player_state", state)
 			emit_signal("changed_resources")
 	if Input.is_action_just_pressed("down"):    # клавиша S
-		if state == State.NORMAL && move_energy == 5:
+		if state == State.NORMAL && move == move_energy:
 			state = State.DOWN
 			#aim_bonus()              # функция зарядки снайпера 
 			emit_signal("player_state", state)
@@ -68,14 +68,19 @@ func leeSystem():
 func move_aim(delta):
 	if state == State.NORMAL && aim_charge > 0:
 		if Input.is_action_pressed("up_aim"):
+			$Gun_idle.visible = false
 			$Aim.visible = true
 			#спрайт будет менять позицию как и движения мышки (следит за мышкой)
 			aim_system(delta)
 			$Aim.global_position = get_global_mouse_position()  
 			if Input.is_action_just_pressed("shoot"):
 				shoot_system()
-		else: $Aim.visible = false
-	else: $Aim.visible = false
+		else:
+			$Aim.visible = false
+			$Gun_idle.visible = true
+	else: 
+		$Aim.visible = false
+		$Gun_idle.visible = true
 
 
 
@@ -132,12 +137,12 @@ func take_damage_player(damage):
 		die_player()
 
 func move_system(delta):
-	if move_energy >= 5:
-		move_energy = 5
-	if state == State.NORMAL && move_energy < 5:
-		move_energy += 1 * delta
-	if state != State.NORMAL && move_energy == 5:
-		move_energy = 0
+	if move >= move_energy:
+		move = move_energy
+	if state == State.NORMAL && move < move_energy:
+		move += 1 * delta
+	if state != State.NORMAL && move == move_energy:
+		move = 0
 	emit_signal("changed_resources")
 
 

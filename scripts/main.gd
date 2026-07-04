@@ -15,9 +15,9 @@ func _ready() -> void:
 	$lee_items/lee_left.visible = false
 	$lee_items/lee_right.visible = false
 	$lee_items/lee_down.visible = false
-	$HUD/HP_bar/HP_label.text = "HP:" + str(player.hp)
-	$HUD/Ammo_bar/Ammo_label.text = "Ammo: " +str(player.ammo)
-	$HUD/AimCharge_bar/AimCharge_label.text = "Aim: " + str(player.aim_charge)
+	$HUD/HP_label.text = "HP:" + str(player.hp)
+	$HUD/Ammo_label.text = "Ammo: " +str(player.ammo)
+	$HUD/AimCharge_label.text = "Aim: " + str(player.aim_charge)
 
 
 func _physics_process(_delta: float) -> void:
@@ -44,11 +44,11 @@ func _on_state_player(state):
 		$lee_items/lee_down.visible = true
 
 func _update_resources():
-	$HUD/HP_bar/HP_label.text = "HP:" + str(player.hp)
-	$HUD/Ammo_bar/Ammo_label.text = "Ammo: " + str(player.ammo)
-	$HUD/AimCharge_bar/AimCharge_label.text = "Aim: " + str(int(player.aim_charge)) 
-	$HUD/Score/Score_label.text = "Score: " + str(player.score_kills)
-	$HUD/Move_charge/Move_Label.text = "Energy: " + str(int(player.move_energy))
+	$HUD/HP_label.text = "HP:" + str(player.hp)
+	$HUD/Ammo_label.text = "Ammo: " + str(player.ammo)
+	$HUD/AimCharge_label.text = "Aim: " + str(int(player.aim_charge)) 
+	$HUD/Score_label.text = "Score: " + str(player.score_kills)
+	$HUD/Move_Label.text = "Energy: " + str(int(player.move))
 
 
 # функция отвечающая за спавн врага

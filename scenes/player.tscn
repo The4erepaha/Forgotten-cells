@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bjy5tok1cf827"]
 
 [ext_resource type="Script" uid="uid://x6br0qpcc20a" path="res://scripts/player.gd" id="1_3vyb7"]
-[ext_resource type="Texture2D" uid="uid://celj7sgs3bg10" path="res://sprites/aim_idle.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://ejek8ft5ccyx" path="res://sprites/aim_action.png" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://bk43x88vik3k7" path="res://sprites/gun_idle.png" id="3_qhqgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wofu5"]
 radius = 4.0
@@ -11,10 +12,17 @@ script = ExtResource("1_3vyb7")
 
 [node name="Aim" type="Area2D" parent="." unique_id=1986403066]
 z_index = 1
+position = Vector2(582, 284)
 
 [node name="Aim_sprite" type="Sprite2D" parent="Aim" unique_id=1938232944]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_g2els")
+position = Vector2(-1.0000305, -3.8146973e-06)
+scale = Vector2(3.6, 3.5999997)
+texture = ExtResource("2_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Aim" unique_id=1044197380]
 shape = SubResource("CircleShape2D_wofu5")
+
+[node name="Gun_idle" type="Sprite2D" parent="." unique_id=268078309]
+position = Vector2(576, 324)
+scale = Vector2(3.6, 3.6000001)
+texture = ExtResource("3_qhqgy")
