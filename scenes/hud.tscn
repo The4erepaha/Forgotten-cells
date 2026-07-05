@@ -25,9 +25,9 @@ label_settings = SubResource("LabelSettings_wofu5")
 
 [node name="Ammo_label" type="Label" parent="." unique_id=70495571]
 z_index = 1
-offset_left = 937.0
+offset_left = 961.0
 offset_top = 460.0
-offset_right = 1136.0
+offset_right = 1160.0
 offset_bottom = 536.0
 text = "Ammo: "
 label_settings = SubResource("LabelSettings_wofu5")
@@ -55,9 +55,9 @@ vertical_alignment = 1
 
 [node name="Move_Label" type="Label" parent="." unique_id=1764821236]
 z_index = 1
-offset_left = 937.0
+offset_left = 961.0
 offset_top = 400.0
-offset_right = 1078.0
+offset_right = 1102.0
 offset_bottom = 451.0
 text = "Energy:"
 label_settings = SubResource("LabelSettings_oo0fn")

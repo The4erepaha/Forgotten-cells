@@ -11,7 +11,7 @@ extends Node2D
 
 @export var player_damage = 1
 
-@export var move_energy = 5  # заряд движения
+@export var move_energy = 2  # заряд движения
 var move = move_energy
 var score_kills = 0   # очки кол-во убитых врагов 
 
